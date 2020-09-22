@@ -1,7 +1,20 @@
+#[macro_export]
+macro_rules! tuple_len {
+    ( ($($a:expr),+) ) => { tuple_len!(1, $($a,)+) };
+    ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { tuple_len!($len + 1, $($rest_a,)+) };
+    ( $len:expr, $a:expr, ) => { $len };
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn tuple_len() {
+        let _x: u8;
+
+        assert_eq!(tuple_len!((1)), 1);
+        assert_eq!(tuple_len!(((1))), 1);
+        assert_eq!(tuple_len!((_x, _x)), 2);
+        assert_eq!(tuple_len!((_x, 1, _x)), 3);
+        assert_eq!(tuple_len!((_x, _x, Some("foo"), || {})), 4);
     }
 }
