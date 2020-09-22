@@ -1,7 +1,7 @@
 #[macro_export]
 macro_rules! tuple_len {
-    ( ($($a:expr),+) ) => { tuple_len!(1, $($a,)+) };
-    ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { tuple_len!($len + 1, $($rest_a,)+) };
+    ( ($($a:expr),+) ) => { $crate::tuple_len!(1, $($a,)+) };
+    ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1, $($rest_a,)+) };
     ( $len:expr, $a:expr, ) => { $len };
 }
 
