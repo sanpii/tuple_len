@@ -12,7 +12,7 @@ mod tests {
         let _x: u8;
 
         assert_eq!(tuple_len!((1)), 1);
-        assert_eq!(tuple_len!(((1))), 1);
+        assert_eq!(tuple_len!(((1, 1))), 1);
         assert_eq!(tuple_len!((_x, _x)), 2);
         assert_eq!(tuple_len!((_x, 1, _x)), 3);
         assert_eq!(tuple_len!((_x, _x, Some("foo"), || {})), 4);
