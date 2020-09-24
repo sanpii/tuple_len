@@ -1,6 +1,6 @@
 [package]
 name = "tuple_len"
-version = "0.1.1"
+version = "1.0.0"
 authors = ["Sanpi <sanpi@homecomputing.fr>"]
 edition = "2018"
 license = "MIT"
