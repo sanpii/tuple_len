@@ -8,6 +8,3 @@ description = "macro to get the number of elements in a tuple"
 repository = "https://github.com/sanpii/tuple_len"
 
 [dependencies]
-
-[badges]
-gitlab = { repository = "sanpi/tuple_len", branch = "master" }
