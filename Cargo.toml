@@ -2,7 +2,7 @@
 name = "tuple_len"
 version = "1.0.0"
 authors = ["Sanpi <sanpi@homecomputing.fr>"]
-edition = "2018"
+edition = "2021"
 license = "MIT"
 description = "macro to get the number of elements in a tuple"
 repository = "https://github.com/sanpii/tuple_len"
