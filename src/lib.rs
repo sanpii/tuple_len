@@ -1,3 +1,5 @@
+#![no_std]
+
 #[macro_export]
 macro_rules! tuple_len {
     ( ($($a:expr),+) ) => { $crate::tuple_len!(1, $($a,)+) };

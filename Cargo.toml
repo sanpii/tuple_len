@@ -6,5 +6,7 @@ edition = "2021"
 license = "MIT"
 description = "macro to get the number of elements in a tuple"
 repository = "https://github.com/sanpii/tuple_len"
+keywords = ["no_std", "no-std"]
+categories = ["no-std"]
 
 [dependencies]
