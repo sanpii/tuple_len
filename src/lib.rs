@@ -1,3 +1,4 @@
+#![warn(warnings)]
 #![no_std]
 
 #[macro_export]
