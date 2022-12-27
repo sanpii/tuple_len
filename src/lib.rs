@@ -6,7 +6,7 @@ macro_rules! tuple_len {
     ( ($($a:expr),+) ) => { $crate::tuple_len!(1, $($a,)+) };
     ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1, $($rest_a,)+) };
     ( $len:expr, $a:expr, ) => { $len };
-    ( () ) => { 0 };
+    ( () ) => { 0usize };
 }
 
 #[cfg(test)]
