@@ -26,6 +26,12 @@ macro_rules! tuple_impl {
                 count!($( $T )*)
             }
         }
+
+        impl<$( $T, )*> TupleLen for &($( $T, )*) {
+            fn len(&self) -> usize {
+                count!($( $T )*)
+            }
+        }
     }
 }
 
@@ -77,6 +83,7 @@ mod tests {
         let _x: u8 = 0;
 
         assert_eq!(crate::len(()), 0);
+        assert_eq!(crate::len(&()), 0);
         assert_eq!(crate::len((_x, _x)), 2);
         assert_eq!(crate::len((_x, 1, _x)), 3);
         assert_eq!(crate::len((_x, _x, Some("foo"), || {})), 4);
