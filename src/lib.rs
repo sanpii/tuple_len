@@ -42,6 +42,10 @@ tuple_impl!(A, B, C, D, E, F, G, H, I, J);
 tuple_impl!(A, B, C, D, E, F, G, H, I, J, K);
 tuple_impl!(A, B, C, D, E, F, G, H, I, J, K, L);
 
+pub fn len(tuple: impl TupleLen) -> usize {
+    tuple.len()
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
@@ -66,5 +70,15 @@ mod tests {
         assert_eq!((_x, _x).len(), 2);
         assert_eq!((_x, 1, _x).len(), 3);
         assert_eq!((_x, _x, Some("foo"), || {}).len(), 4);
+    }
+
+    #[test]
+    fn function() {
+        let _x: u8 = 0;
+
+        assert_eq!(crate::len(()), 0);
+        assert_eq!(crate::len((_x, _x)), 2);
+        assert_eq!(crate::len((_x, 1, _x)), 3);
+        assert_eq!(crate::len((_x, _x, Some("foo"), || {})), 4);
     }
 }
