@@ -3,7 +3,7 @@
 
 #[macro_export]
 macro_rules! tuple_len {
-    ( ($($a:expr),+) ) => { $crate::tuple_len!(1, $($a,)+) };
+    ( ($($a:expr),+ $(,)?) ) => { $crate::tuple_len!(1, $($a,)+) };
     ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1, $($rest_a,)+) };
     ( $len:expr, $a:expr, ) => { $len };
     ( () ) => { 0usize };
@@ -36,6 +36,7 @@ macro_rules! tuple_impl {
 }
 
 tuple_impl!();
+tuple_impl!(A);
 tuple_impl!(A, B);
 tuple_impl!(A, B, C);
 tuple_impl!(A, B, C, D);
@@ -60,6 +61,7 @@ mod tests {
 
         assert_eq!(tuple_len!(()), 0);
         assert_eq!(tuple_len!((1)), 1);
+        assert_eq!(tuple_len!((1,)), 1);
         assert_eq!(tuple_len!(((1, 1))), 1);
         assert_eq!(tuple_len!((_x, _x)), 2);
         assert_eq!(tuple_len!((_x, 1, _x)), 3);
@@ -73,6 +75,7 @@ mod tests {
         let _x: u8 = 0;
 
         assert_eq!(().len(), 0);
+        assert_eq!((1,).len(), 1);
         assert_eq!((_x, _x).len(), 2);
         assert_eq!((_x, 1, _x).len(), 3);
         assert_eq!((_x, _x, Some("foo"), || {}).len(), 4);
@@ -84,6 +87,7 @@ mod tests {
 
         assert_eq!(crate::len(()), 0);
         assert_eq!(crate::len(&()), 0);
+        assert_eq!(crate::len((1,)), 1);
         assert_eq!(crate::len((_x, _x)), 2);
         assert_eq!(crate::len((_x, 1, _x)), 3);
         assert_eq!(crate::len((_x, _x, Some("foo"), || {})), 4);
