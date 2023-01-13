@@ -11,7 +11,7 @@ Add it to your dependencies:
 
 ```toml
 [dependencies]
-tuple_len = "1.0"
+tuple_len = "2.0"
 ```
 
 ```rust
