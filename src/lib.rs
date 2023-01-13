@@ -93,3 +93,9 @@ mod tests {
         assert_eq!(crate::len((_x, _x, Some("foo"), || {})), 4);
     }
 }
+
+#[cfg(doctest)]
+mod readme {
+    #[doc = include_str!("../README.md")]
+    extern "C" {}
+}
