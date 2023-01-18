@@ -7,6 +7,8 @@ macro_rules! tuple_len {
     ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1, $($rest_a,)+) };
     ( $len:expr, $a:expr, ) => { $len };
     ( () ) => { 0usize };
+    ( $tuple:ident ) => { $crate::len($tuple) };
+    ( &$tuple:ident ) => { $crate::len(&$tuple) };
 }
 
 #[allow(clippy::len_without_is_empty)]
@@ -66,6 +68,14 @@ mod tests {
         assert_eq!(tuple_len!((_x, _x)), 2);
         assert_eq!(tuple_len!((_x, 1, _x)), 3);
         assert_eq!(tuple_len!((_x, _x, Some("foo"), || {})), 4);
+    }
+
+    #[test]
+    fn macro_ident() {
+        let tuple = ();
+
+        assert_eq!(crate::tuple_len!(tuple), 0);
+        assert_eq!(crate::tuple_len!(&tuple), 0);
     }
 
     #[test]
