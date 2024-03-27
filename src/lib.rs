@@ -24,12 +24,14 @@ macro_rules! count {
 macro_rules! tuple_impl {
     ($( $T:ident ),*) => {
         impl<$( $T, )*> TupleLen for ($( $T, )*) {
+            #[inline]
             fn len(&self) -> usize {
                 count!($( $T )*)
             }
         }
 
         impl<$( $T, )*> TupleLen for &($( $T, )*) {
+            #[inline]
             fn len(&self) -> usize {
                 count!($( $T )*)
             }
@@ -51,6 +53,7 @@ tuple_impl!(A, B, C, D, E, F, G, H, I, J);
 tuple_impl!(A, B, C, D, E, F, G, H, I, J, K);
 tuple_impl!(A, B, C, D, E, F, G, H, I, J, K, L);
 
+#[inline]
 pub fn len(tuple: impl TupleLen) -> usize {
     tuple.len()
 }
