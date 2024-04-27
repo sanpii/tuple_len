@@ -17,11 +17,11 @@ cargo add tuple_len
 // The macro way, compute at compilation time
 assert_eq!(tuple_len::tuple_len!(("hello", 5, 'c')), 3);
 
-// The trait way
+// The trait way — limited to sized 12 tuple
 use tuple_len::TupleLen;
 assert_eq!(().len(), 0);
 
-// The function way
+// The function way — idem
 let tuple = (1,);
 assert_eq!(tuple_len::len(&tuple), 1);
 ```
