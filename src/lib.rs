@@ -1,5 +1,6 @@
 #![warn(warnings)]
 #![no_std]
+#![doc = include_str!("../README.md")]
 
 #[macro_export]
 macro_rules! tuple_len {
@@ -105,10 +106,4 @@ mod tests {
         assert_eq!(crate::len((_x, 1, _x)), 3);
         assert_eq!(crate::len((_x, _x, Some("foo"), || {})), 4);
     }
-}
-
-#[cfg(doctest)]
-mod readme {
-    #[doc = include_str!("../README.md")]
-    extern "C" {}
 }
