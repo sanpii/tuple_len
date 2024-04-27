@@ -9,9 +9,8 @@ Get the number of elements in a tuple.
 
 Add it to your dependencies:
 
-```toml
-[dependencies]
-tuple_len = "2.0"
+```sh
+cargo add tuple_len
 ```
 
 ```rust
