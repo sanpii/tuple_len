@@ -4,8 +4,8 @@
 
 #[macro_export]
 macro_rules! tuple_len {
-    ( ($($a:expr),+ $(,)?) ) => { $crate::tuple_len!(1, $($a,)+) };
-    ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1, $($rest_a,)+) };
+    ( ($($a:expr),+ $(,)?) ) => { $crate::tuple_len!(1usize, $($a,)+) };
+    ( $len:expr, $a:expr, $($rest_a:expr,)+ ) => { $crate::tuple_len!($len + 1usize, $($rest_a,)+) };
     ( $len:expr, $a:expr, ) => { $len };
     ( () ) => { 0usize };
     ( $tuple:ident ) => { $crate::len($tuple) };
