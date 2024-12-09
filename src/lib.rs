@@ -100,7 +100,10 @@ mod tests {
         let _x: u8 = 0;
 
         assert_eq!(crate::len(()), 0);
-        assert_eq!(crate::len(&()), 0);
+        #[allow(clippy::needless_borrows_for_generic_args)]
+        {
+            assert_eq!(crate::len(&()), 0);
+        }
         assert_eq!(crate::len((1,)), 1);
         assert_eq!(crate::len((_x, _x)), 2);
         assert_eq!(crate::len((_x, 1, _x)), 3);
