@@ -2,7 +2,7 @@
 name = "tuple_len"
 version = "3.0.0"
 authors = ["Sanpi <sanpi@homecomputing.fr>"]
-edition = "2021"
+edition = "2024"
 license = "MIT"
 description = "Get the number of elements in a tuple"
 repository = "https://github.com/sanpii/tuple_len"
